@@ -1,0 +1,31 @@
+CREATE OR REPLACE PROCEDURE update_sneakers_price(
+  in_price NUMBER,
+  in_sneaker_id NUMBER
+)
+IS
+BEGIN
+  UPDATE sneakers
+  SET price = in_price
+  WHERE sneaker_id = in_sneaker_id;
+  
+  DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' row(s) updated.');
+  
+  COMMIT;
+END;
+
+
+
+This procedure takes two input parameters: in_price and in_sneaker_id. It updates the price of a sneaker in the sneakers table using these input parameters. After the update statement is executed, the procedure uses SQL%ROWCOUNT to determine the number of rows affected and outputs this information using DBMS_OUTPUT.PUT_LINE. Finally, the procedure commits the transaction to make the changes permanent in the database.
+
+
+
+
+
+To test a procedure, we can call it with valid input parameters and test the output.
+
+DECLARE
+  v_sneaker_id NUMBER := 1;
+  v_new_price NUMBER := 150.00;
+BEGIN
+  update_sneakers_price(in_price => v_new_price, in_sneaker_id => v_sneaker_id);
+END;
