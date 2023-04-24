@@ -6,7 +6,6 @@ BEGIN
   SELECT COUNT(*) INTO l_count FROM Customers;
   DBMS_OUTPUT.PUT_LINE('Current number of rows in Customers table: ' || l_count);
 END;
-/
 
 
 This trigger will be executed before inserting a new row in the table, and will show the current number of rows in that table using the DBMS_OUTPUT.PUT_LINE procedure. 

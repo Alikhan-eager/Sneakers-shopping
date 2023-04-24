@@ -1,0 +1,17 @@
+create or replace TRIGGER update_order_status
+AFTER INSERT ON Returns
+FOR EACH ROW
+BEGIN
+    UPDATE Orders
+    SET status = 'cancelled'
+    WHERE order_id = :new.order_id;
+    DBMS_OUTPUT.PUT_LINE('Order '  :new.order_id  ' has been cancelled.');
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('No orders found for customer.');
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Error cancelling order');
+END;
+
+
+This trigger is designed to update the status of an order in the "Orders" table when a new record is inserted into the "Returns" table.
