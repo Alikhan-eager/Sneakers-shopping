@@ -1,5 +1,3 @@
-This function takes a table name as input and returns the count of records in that table. It uses dynamic SQL to construct a SELECT statement that counts the rows in the specified table, and then executes that statement using the EXECUTE IMMEDIATE statement. The count is then returned by the function.
-
 CREATE OR REPLACE FUNCTION count_records(table_name IN VARCHAR2) RETURN NUMBER IS
   num_records NUMBER;
 BEGIN
@@ -7,9 +5,6 @@ BEGIN
   RETURN num_records;
 END;
 
-
-
-We can also use a previously defined function for our tables. Here is an example of how to use the count_records function to count the number of records in each of your tables:
 
 
 SELECT count_records('Sneakers') as sneaker_count FROM dual;
@@ -22,4 +17,3 @@ SELECT count_records('Fulfillment_Center') as fulfillment_center_count FROM dual
 SELECT count_records('Return') as return_count FROM dual;
 
 
-Each of these queries will return the number of records in the specified table. We can replace the table name in each query to get the count for another table.

@@ -1,28 +1,15 @@
-A procedure that groups sneakers by brand and returns the total number of sneakers for each brand:
-
-CREATE OR REPLACE PROCEDURE get_sneaker_counts_by_brand(
-  p_brand IN VARCHAR2,
-  p_cursor OUT SYS_REFCURSOR
-) AS
-  v_brand VARCHAR2(50);
-  v_count NUMBER(10);
+CREATE OR REPLACE PROCEDURE group_sneakers_by_brand
+IS
 BEGIN
-  SELECT brand, COUNT(*) AS count
-  INTO v_brand, v_count
-  FROM Sneakers
-  WHERE brand = p_brand
-  GROUP BY brand;
-
-  OPEN p_cursor FOR
-    SELECT v_brand AS brand, v_count AS count
-    FROM DUAL;
+  FOR brand_rec IN (SELECT brand, COUNT(*) AS total_count FROM Sneakers GROUP BY brand)
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('Brand: ' || brand_rec.brand || ', Total Count: ' || brand_rec.total_count);
+  END LOOP;
 END;
 
-This procedure takes a brand name as input and returns a cursor with one row that shows the brand name and the total number of sneakers for that brand. You can call the procedure like this:
 
-DECLARE
-  v_cursor SYS_REFCURSOR;
 BEGIN
-  get_sneaker_counts_by_brand('Nike', v_cursor);
-  -- do something with the cursor
+  group_sneakers_by_brand;
 END;
+
+

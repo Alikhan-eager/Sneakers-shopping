@@ -15,13 +15,6 @@ END;
 
 
 
-This procedure takes two input parameters: in_price and in_sneaker_id. It updates the price of a sneaker in the sneakers table using these input parameters. After the update statement is executed, the procedure uses SQL%ROWCOUNT to determine the number of rows affected and outputs this information using DBMS_OUTPUT.PUT_LINE. Finally, the procedure commits the transaction to make the changes permanent in the database.
-
-
-
-
-
-To test a procedure, we can call it with valid input parameters and test the output.
 
 DECLARE
   v_sneaker_id NUMBER := 1;

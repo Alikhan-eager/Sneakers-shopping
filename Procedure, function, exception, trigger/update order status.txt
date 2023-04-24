@@ -12,6 +12,3 @@ BEGIN
     WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Error cancelling order');
 END;
-
-
-This trigger is designed to update the status of an order in the "Orders" table when a new record is inserted into the "Returns" table.

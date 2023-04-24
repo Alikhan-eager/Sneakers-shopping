@@ -13,11 +13,6 @@ EXCEPTION
 END;
 
 
-This trigger is fired before each insertion into the Sneakers table and checks if the length of the model column is less than 5 characters. If the length is less than 5 characters, it raises the title_length exception, which is then caught and raises an APPLICATION_ERROR with the message "Title must be at least 5 characters long". This will prevent the insertion of records with titles less than 5 characters long.
-
-
-
-We can check if the trigger is working properly by trying to insert a record into the Sneakers table with a model value of less than 5 characters:
 
 INSERT INTO Sneakers (sneaker_id, brand, model, sizes, color, price, description, manufacturer_id)
 VALUES (1, 'Nike', 'Air', 9.5, 'Red', 100, 'Comfortable shoes', 1);

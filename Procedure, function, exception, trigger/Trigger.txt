@@ -8,9 +8,6 @@ BEGIN
 END;
 
 
-This trigger will be executed before inserting a new row in the table, and will show the current number of rows in that table using the DBMS_OUTPUT.PUT_LINE procedure. 
-
-
 
 We can check:
 INSERT INTO Payment_Method VALUES (3, 'credit', 'John Doe', '1234567890123456', '01/01/2023', '123');
